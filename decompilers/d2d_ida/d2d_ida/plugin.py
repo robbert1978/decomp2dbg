@@ -30,8 +30,8 @@ class IDBHooks(ida_idp.IDB_Hooks):
         ida_idp.IDB_Hooks.__init__(self)
 
     def renamed(self, ea, new_name, local_name):
-        if IDA_VERSION == "9.0":
-            if idc.is_member_id(ea) or idc.get_struc(ea) or idc.get_enum_name(ea):
+        if "9." in IDA_VERSION:
+            if idc.is_member_id(ea) or idc.get_enum_name(ea):
                 return 0
         else:
             import ida_struct, ida_enum
